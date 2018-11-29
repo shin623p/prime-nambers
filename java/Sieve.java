@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Sieve {
-    private static ArrayList<Integer> sieve(int n) {
+    private static List<Integer> sieve(int n) {
         boolean[] nums = new boolean[n+1];
         Arrays.fill(nums, true);
         
@@ -14,7 +15,7 @@ public class Sieve {
             }
         }
 
-        ArrayList<Integer> primes = new ArrayList<>();
+        List<Integer> primes = new ArrayList<>();
         primes.add(2);
         for (int i = 3; i <= n; i = i + 2) {
             if (nums[i]) primes.add(i);
@@ -27,7 +28,7 @@ public class Sieve {
         Scanner sc = new Scanner(System.in);
         int n = Integer.parseInt(sc.next());
         
-        ArrayList<Integer> primes = sieve(n);
+        List<Integer> primes = sieve(n);
 
         System.out.println( primes.size() + " " + primes.get(primes.size() - 1) );
     }
