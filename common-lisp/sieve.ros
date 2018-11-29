@@ -1,0 +1,25 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  ;;#+quicklisp(ql:quickload '() :silent t)
+  )
+
+(defpackage :ros.script.sieve.3752324277
+  (:use :cl))
+(in-package :ros.script.sieve.3752324277)
+
+(asdf:initialize-source-registry
+ `(:source-registry
+   (:directory ,*default-pathname-defaults*) :inherit-configuration))
+
+(require :sieve)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (sieve:main)
+  )
+;;; vim: set ft=lisp lisp:
