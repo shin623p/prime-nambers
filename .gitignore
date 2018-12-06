@@ -20,3 +20,4 @@ c/a.out
 java/*.class
 common-lisp/sieve
 nim/sieve
+go/sieve
