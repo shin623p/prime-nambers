@@ -5,20 +5,24 @@
 (in-package :sieve)
 
 (declaim (optimize (speed 3) (debug 0) (safety 0) (compilation-speed 0)))
-(declaim (ftype (function (fixnum) simple-bit-vector) gen-bit-seq))
-(declaim (ftype (function (fixnum) (values simple-vector &optional fixnum)) sieve))
 
-(defun gen-bit-seq (n)
+(declaim (ftype (function (fixnum) simple-bit-vector) gen-nums))
+(defun gen-nums (n)
   (make-sequence 'simple-bit-vector n :initial-element 1))
 
+(declaim (ftype (function (fixnum) simple-vector) gen-primes))
+(defun gen-primes (n)
+  (make-sequence 'simple-vector n))
+
+(declaim (ftype (function (fixnum) (values simple-vector fixnum)) sieve))
 (defun sieve (maxnum)
-  (let ((nums (gen-bit-seq (1+ maxnum))))
-    (loop for n fixnum from 3 by 2 while (<= (* n n) maxnum)
+  (let ((nums (gen-nums (1+ maxnum))))
+    (loop for n fixnum from 3 by 2 while (<= (the fixnum (* n n)) maxnum)
        when (= (sbit nums n) 1)
        do (loop for x fixnum from (* n 3) to maxnum by (* n 2)
              do (setf (sbit nums x) 0)))
-    (let* ((primes-cnt (- (count 1 nums) (ceiling (/ maxnum 2)) 1))
-           (primes (make-sequence 'simple-vector primes-cnt)))
+    (let* ((primes-cnt (- (count 1 nums) (ash maxnum -1) 1))
+           (primes (gen-primes primes-cnt)))
       (setf (svref primes 0) 2)
       (loop for n fixnum from 3 to maxnum by 2
          with x fixnum = 1
