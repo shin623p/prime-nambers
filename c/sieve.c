@@ -4,7 +4,7 @@
 char* sieve(char *nums, int max){
   for(int i = 3; max >= i * i; i = i + 2){
     if (!nums[i]) continue;
-    for(int j = i * 3; j <= max; j = j + i * 2){
+    for(int j = i * i; j <= max; j = j + i * 2){
       if (nums[j]) nums[j] = 0;
     }
   }

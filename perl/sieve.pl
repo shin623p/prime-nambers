@@ -14,7 +14,7 @@ sub sieve {
     for (my $i = 3; $i <= int(sqrt($n)); $i = $i + 2) {
         next unless $nums[$i];
         
-        for (my $j = $i * 3; $j <= $n; $j = $j + $i * 2) {
+        for (my $j = $i * $i; $j <= $n; $j = $j + $i * 2) {
             $nums[$j] = 0;
         }
     }

@@ -5,7 +5,7 @@ def sieve(n):
     for i in range( 3, math.ceil( n**0.5 ), 2):
         if nums[i] == 0:
             continue
-        for j in range( i * 3, n, i * 2 ):
+        for j in range( i * i, n, i * 2 ):
             if nums[j] != 0:
                 nums[j] = 0
 

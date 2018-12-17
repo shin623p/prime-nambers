@@ -3,7 +3,7 @@ def sieve(n)
   3.step( (n ** 0.5).ceil, 2) do |i|
     next unless nums[i]
     
-    (i + i + i).step(n, i + i) do |j|
+    (i * i).step(n, i + i) do |j|
       nums[j] = 0 if nums[j]
     end
   end

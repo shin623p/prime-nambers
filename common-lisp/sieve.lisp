@@ -19,7 +19,7 @@
   (let ((nums (gen-nums (1+ maxnum))))
     (loop for n fixnum from 3 by 2 while (<= (the fixnum (* n n)) maxnum)
        when (= (sbit nums n) 1)
-       do (loop for x fixnum from (* n 3) to maxnum by (* n 2)
+       do (loop for x fixnum from (the fixnum (* n n)) to maxnum by (* n 2)
              do (setf (sbit nums x) 0)))
     (let* ((primes-cnt (- (count 1 nums) (ash maxnum -1) 1))
            (primes (gen-primes primes-cnt)))

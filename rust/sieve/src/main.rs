@@ -10,7 +10,7 @@ fn sieve(n: u32) -> Vec<u32> {
             continue;
         }
 
-        for j in ((i * 3)..(n + 1) as usize).step_by(i * 2) {
+        for j in ((i * i)..(n + 1) as usize).step_by(i * 2) {
             if nums[j] {
                 nums[j] = false;
             }

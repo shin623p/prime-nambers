@@ -9,7 +9,7 @@ proc sieve (maxnum: int): seq[int] =
     if nums[i] == 0:
       continue
       
-    for j in countup( i * 3, maxnum, i * 2):
+    for j in countup( i * i, maxnum, i * 2):
       if nums[j] == 1:
         nums[j] = 0
 

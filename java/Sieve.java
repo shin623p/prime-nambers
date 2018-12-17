@@ -10,7 +10,7 @@ public class Sieve {
         
         for (int i = 3; n >= i * i; i = i + 2) {
             if (!nums[i]) continue;
-            for (int j = i * 3; j <= n; j = j + i * 2) {
+            for (int j = i * i; j <= n; j = j + i * 2) {
                 if (nums[j]) nums[j] = false;
             }
         }

@@ -15,7 +15,7 @@ func sieve(n int) []int {
 			continue
 		}
 
-		for j := i * 3; j <= n; j = j + i * 2 {
+		for j := i * i; j <= n; j = j + i * 2 {
 			if nums[j] {
 				nums[j] = false
 			}
