@@ -1,6 +1,7 @@
 (defpackage :sieve
   (:use :cl)
-  (:export :main))
+  (:export :calc-up-to
+           :main))
 
 (in-package :sieve)
 
@@ -14,8 +15,8 @@
 (defun gen-primes (n)
   (make-sequence 'simple-vector n))
 
-(declaim (ftype (function (fixnum) (values simple-vector fixnum)) sieve))
-(defun sieve (maxnum)
+(declaim (ftype (function (fixnum) (values simple-vector fixnum)) calc-up-to))
+(defun calc-up-to (maxnum)
   (let ((nums (gen-nums (1+ maxnum))))
     (loop for n fixnum from 3 by 2 while (<= (the fixnum (* n n)) maxnum)
        when (= (sbit nums n) 1)
@@ -32,5 +33,5 @@
       (values primes primes-cnt))))
 
 (defun main ()
-  (multiple-value-bind (primes primes-cnt) (sieve (read))
+  (multiple-value-bind (primes primes-cnt) (cacl-up-to (read))
     (format t "~A ~A~%" primes-cnt (svref primes (1- primes-cnt)))))

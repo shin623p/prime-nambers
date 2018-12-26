@@ -4,4 +4,5 @@
   :class :package-inferred-system
   ;; :pathname ""
   :defsystem-depends-on (:asdf-package-system)
-  :depends-on (:sieve/sieve))
+  :depends-on (:sieve/sieve)
+  :in-order-to ((test-op (test-op sieve-test))))
