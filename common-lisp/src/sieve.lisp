@@ -33,5 +33,5 @@
       (values primes primes-cnt))))
 
 (defun main ()
-  (multiple-value-bind (primes primes-cnt) (cacl-up-to (read))
+  (multiple-value-bind (primes primes-cnt) (calc-up-to (read))
     (format t "~A ~A~%" primes-cnt (svref primes (1- primes-cnt)))))

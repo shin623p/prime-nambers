@@ -1,6 +1,6 @@
 (asdf:defsystem :sieve-test
   :class :package-inferred-system
-  :pathname "test"
+  :pathname "t"
   :defsystem-depends-on (:prove-asdf)
   :depends-on (:sieve/sieve
                :prove)
