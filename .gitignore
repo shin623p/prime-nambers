@@ -21,4 +21,4 @@ java/*.class
 common-lisp/sieve
 nim/sieve
 go/sieve
-rust/sieve/target/*
+rust/target/*
